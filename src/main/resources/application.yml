@@ -1,17 +1,13 @@
 server:
-  port: 0
+  port: 8761
 
 spring:
   application:
     name: bookmark-service
 
 eureka:
-  instance:
-    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+#  instance:
+#    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
   client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      default-zone: http://127.0.0.1:8761/eureka
-
-
+    register-with-eureka: false
+    fetch-registry: false

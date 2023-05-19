@@ -2,13 +2,13 @@ package maingruop.msa_of_memory;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-@EnableDiscoveryClient
+@EnableEurekaServer
 public class MsaOfMemoryApplication {
 
     public static void main(String[] args) {
