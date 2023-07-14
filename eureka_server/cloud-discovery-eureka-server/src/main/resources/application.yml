@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: msa-discovery
+  cloud:
+    uri: http://127.0.0.1:8888
+    name: msa
 
 eureka:
   client:
