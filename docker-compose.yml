@@ -1,0 +1,16 @@
+version: "1.0"
+
+services:
+  eureka-server:
+    build:
+      context: ./eureka_server/
+    volumes:
+      - /app/node_modules
+      - ./vue/business_work_front/business_work_front:/app
+  api-gateway:
+    build:
+  spring-kafka:
+    build:
+  user-service:
+    build:
+

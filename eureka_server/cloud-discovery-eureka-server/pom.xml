@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>cloud-discovery-eureka-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>cloud-discovery-eureka-server</name>
     <description>cloud-discovery-eureka-server</description>
     <properties>
