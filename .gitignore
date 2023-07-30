@@ -3,6 +3,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+/api-gateway/apigate-service/target/
+/eureka_server/cloud-discovery-eureka-server/target/
 
 ### STS ###
 .apt_generated
