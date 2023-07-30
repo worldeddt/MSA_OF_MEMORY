@@ -1,7 +1,7 @@
-FROM openjdk:19
+FROM openjdk:17
 MAINTAINER EDDY
 LABEL authors="worldeddt"
-WORKDIR /home
+WORKDIR /home/eureka_server
 EXPOSE 8761
 
 #RUN apt update
@@ -15,4 +15,4 @@ CMD ["./mvnw", "clean", "package", "-DskipTests"]
 
 COPY ${JAR_FILE_PATH} "cloud-discovery-eureka-server.jar"
 
-#CMD ["nohup", "java", "-jar", "./cloud-discovery-eureka-server.jar", "&"]
+CMD ["nohup", "java", "-jar", "cloud-discovery-eureka-server.jar", "&"]

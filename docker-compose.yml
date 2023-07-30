@@ -1,13 +1,33 @@
 version: "2.2"
 
 services:
-  eureka_server:
+#  eureka_server:
+#    networks:
+#      - msa_network
+#    build:
+#      context: "./eureka_server/cloud-discovery-eureka-server"
+#      dockerfile: "./docker/Dockerfile"
+#    volumes:
+#      - ./eureka_server/cloud-discovery-eureka-server:/home/eureka_server
+#    ports:
+#      - "${EUREKA_PORT:-8761}:8761"
+#    container_name: eureka_server
+  api_gateway:
+#    depends_on:
+#      - eureka_server
+    networks:
+      - msa_network
     build:
-      context: "./eureka_server/cloud-discovery-eureka-server"
+      context: "./api-gateway/apigate-service"
       dockerfile: "./docker/Dockerfile"
     volumes:
-      - ./eureka_server/cloud-discovery-eureka-server
+      - ./api-gateway/apigate-service:/home/api_gateway
     ports:
-      - "${BUSINESS_FRONT_PORT:-8761}:8761"
-    container_name: eureka_server
+      - "${API_GATE_PORT:-8000}:8000"
+    container_name: api_gateway
+    restart: "unless-stopped"
+networks:
+  msa_network:
+volumes:
+  api_gateway:
 
