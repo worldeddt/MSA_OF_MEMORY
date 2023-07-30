@@ -1,12 +1,18 @@
 FROM openjdk:19
 MAINTAINER EDDY
 LABEL authors="worldeddt"
+WORKDIR /home
+EXPOSE 8761
+
+#RUN apt update
+#RUN apt install net-tools
+#RUN apt install sudo
+#RUN apt install lsof
+
+ARG JAR_FILE_PATH="./target/*.jar"
 
 CMD ["./mvnw", "clean", "package", "-DskipTests"]
 
-EXPOSE 8761
-
-ARG JAR_FILE_PATH=./eureka_server/cloud-discovery-eureka-server/*.jar
 COPY ${JAR_FILE_PATH} "cloud-discovery-eureka-server.jar"
 
-CMD ["nohup", "java", "-jar", "cloud-discovery-eureka-server.jar", "&"]
+#CMD ["nohup", "java", "-jar", "./cloud-discovery-eureka-server.jar", "&"]

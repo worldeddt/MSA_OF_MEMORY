@@ -1,16 +1,13 @@
-version: "1.0"
+version: "2.2"
 
 services:
-  eureka-server:
+  eureka_server:
     build:
-      context: ./eureka_server/
+      context: "./eureka_server/cloud-discovery-eureka-server"
+      dockerfile: "./docker/Dockerfile"
     volumes:
-      - /app/node_modules
-      - ./vue/business_work_front/business_work_front:/app
-  api-gateway:
-    build:
-  spring-kafka:
-    build:
-  user-service:
-    build:
+      - ./eureka_server/cloud-discovery-eureka-server
+    ports:
+      - "${BUSINESS_FRONT_PORT:-8761}:8761"
+    container_name: eureka_server
 
