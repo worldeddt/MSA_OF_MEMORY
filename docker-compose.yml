@@ -9,7 +9,6 @@ services:
       dockerfile: "./docker/Dockerfile"
     volumes:
       - ./eureka_server/cloud-discovery-eureka-server:/home/eureka_server
-#      - ./eureka_server/cloud-discovery-eureka-server/target/*.jar:/home/eureka_server/cloud-discovery-eureka-server.jar
     ports:
       - "${EUREKA_PORT:-8761}:8761"
     container_name: eureka_server
@@ -27,9 +26,34 @@ services:
       - "${API_GATE_PORT:-8000}:8000"
     container_name: api_gateway
     restart: "unless-stopped"
-    stop_grace_period: "10s"
+    stop_grace_period: "50s"
+  spring_kafka:
+    depends_on:
+      - "api_gateway"
+    build:
+      context: "./springKafka"
+      dockerfile: "./docker/Dockerfile"
+    networks:
+      - msa_network
+    volumes:
+      - ./springKafka:/home/springKafka
+    ports:
+      - "${KAFKA_PORT:-8080}:8080"
+  user_service:
+    depends_on:
+      - "spring_kafka"
+    build:
+      context: "./user-service"
+      dockerfile: "./docker/Dockerfile"
+    networks:
+      - msa_network
+    volumes:
+      - ./user-service:/home/user-service
+    ports:
+      - "${USER_PORT:-8082}:8082"
 networks:
   msa_network:
+    driver: bridge
 volumes:
   api_gateway:
   eureka_server:

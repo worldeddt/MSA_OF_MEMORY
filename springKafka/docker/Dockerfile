@@ -1,12 +1,13 @@
-FROM openjdk:19
+FROM openjdk:17
 MAINTAINER EDDY
 LABEL authors="worldeddt"
+WORKDIR /home/springKafka
 
-CMD ["./mvnw", "clean", "package", "-DskipTests"]
+EXPOSE 8080
 
-EXPOSE 8761
+CMD ["./springKafka/mvnw", "clean", "package", "-DskipTests"]
 
-ARG JAR_FILE_PATH=./eureka_server/cloud-discovery-eureka-server/*.jar
-COPY ${JAR_FILE_PATH} "cloud-discovery-eureka-server.jar"
+ARG JAR_FILE_PATH=./springKafka/target/*.jar
+COPY ${JAR_FILE_PATH} "spring-kafka-server.jar"
 
-CMD ["nohup", "java", "-jar", "cloud-discovery-eureka-server.jar", "&"]
+CMD ["nohup", "java", "-jar", "spring-kafka-server.jar", "&"]
