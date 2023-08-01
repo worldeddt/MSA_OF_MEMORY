@@ -5,9 +5,8 @@ WORKDIR /home/springKafka
 
 EXPOSE 8080
 
-CMD ["./springKafka/mvnw", "clean", "package", "-DskipTests"]
+COPY ../entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+CMD ["/entrypoint.sh"]
 
-ARG JAR_FILE_PATH=./springKafka/target/*.jar
-COPY ${JAR_FILE_PATH} "spring-kafka-server.jar"
-
-CMD ["nohup", "java", "-jar", "spring-kafka-server.jar", "&"]
+CMD ["nohup", "java", "-jar", "target/springKafka-0.0.1.jar", "&"]
