@@ -5,9 +5,8 @@ WORKDIR /home/user-service
 
 EXPOSE 8082
 
-CMD ["./user-service/mvnw", "clean", "package", "-DskipTests"]
+COPY ../entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+CMD ["/entrypoint.sh"]
 
-ARG JAR_FILE_PATH=./user-serivce/target/*.jar
-COPY ${JAR_FILE_PATH} "user-service.jar"
-
-CMD ["nohup", "java", "-jar", "user-service.jar", "&"]
+CMD ["nohup", "java", "-jar", "target/user-service-0.0.1.jar", "&"]

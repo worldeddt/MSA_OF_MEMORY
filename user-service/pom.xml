@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>netflix-zuul-user</artifactId>
     <version>0.0.1</version>
-    <name>netflix-zuul-user</name>
+    <name>user-service</name>
     <description>netflix-zuul-user</description>
     <properties>
         <java.version>17</java.version>
