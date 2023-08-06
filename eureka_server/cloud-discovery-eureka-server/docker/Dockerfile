@@ -1,11 +1,15 @@
-FROM openjdk:17
+FROM ubuntu:18.04
 MAINTAINER EDDY
 LABEL authors="worldeddt"
 WORKDIR /home/eureka_server
 EXPOSE 8761
 
+RUN apt-get update && \
+    apt-get install -y openjdk-17-jdk && \
+    apt-get install net-tools &&  \
+    apt-get install -y iputils-ping && \
+    apt-get clean;
+
 COPY ../entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-CMD ["/entrypoint.sh"]
-
-CMD ["nohup", "java", "-jar", "target/cloud-discovery-eureka-server-0.0.1.jar", "&"]
+ENTRYPOINT ["./entrypoint.sh"]
