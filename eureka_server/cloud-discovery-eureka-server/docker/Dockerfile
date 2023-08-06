@@ -6,7 +6,7 @@ EXPOSE 8761
 
 RUN apt-get update && \
     apt-get install -y openjdk-17-jdk && \
-    apt-get install net-tools &&  \
+    apt-get install -y net-tools &&  \
     apt-get install -y iputils-ping && \
     apt-get clean;
 

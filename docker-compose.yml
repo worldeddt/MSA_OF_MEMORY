@@ -6,7 +6,6 @@ services:
     networks:
       msa_network:
         ipv4_address: 172.24.0.2
-
     build:
       context: "./eureka_server/cloud-discovery-eureka-server"
       dockerfile: "./docker/Dockerfile"
@@ -19,7 +18,8 @@ services:
     depends_on:
       - "eureka_server"
     networks:
-      - msa_network
+      msa_network:
+        ipv4_address: 172.24.0.3
     build:
       context: "./api-gateway/apigate-service"
       dockerfile: "./docker/Dockerfile"
@@ -30,30 +30,62 @@ services:
     container_name: api_gateway
     restart: "unless-stopped"
     stop_grace_period: "50s"
-#  spring_kafka:
-#    depends_on:
-#      - "api_gateway"
-#    build:
-#      context: "./springKafka"
-#      dockerfile: "./docker/Dockerfile"
-#    networks:
-#      - msa_network
-#    volumes:
-#      - ./springKafka:/home/springKafka
-#    ports:
-#      - "${KAFKA_PORT:-8080}:8080"
-#  user_service:
-#    depends_on:
-#      - "spring_kafka"
-#    build:
-#      context: "./user-service"
-#      dockerfile: "./docker/Dockerfile"
-#    networks:
-#      - msa_network
-#    volumes:
-#      - ./user-service:/home/user-service
-#    ports:
-#      - "${USER_PORT:-8082}:8082"
+  booker_db:
+    depends_on:
+      - "spring_kafka"
+    environment:
+      - MARIADB_ROOT_PASSWORD=eddy
+      - MARIADB_USER=eddy
+      - MARIADB_DB=msa
+    networks:
+      msa_network:
+        ipv4_address: 172.24.0.4
+    ports:
+      - "${BOOKER_DB_PORT:-3306}:3306"
+    build:
+      context: "./"
+      dockerfile: "mariadb/docker/booker/Dockerfile"
+  user_db:
+    networks:
+      msa_network:
+        ipv4_address: 172.24.0.5
+    depends_on:
+      - "user_service"
+    environment:
+      - MARIADB_ROOT_PASSWORD=eddy
+      - MARIADB_USER=eddy
+      - MARIADB_DB=msa
+    build:
+      context: "./"
+      dockerfile: "mariadb/docker/user/Dockerfile"
+    ports:
+      - "${USER_DB_PORT:-3307}:3306"
+  spring_kafka:
+    depends_on:
+      - "api_gateway"
+    build:
+      context: "./springKafka"
+      dockerfile: "./docker/Dockerfile"
+    networks:
+      msa_network:
+        ipv4_address: 172.24.0.6
+    volumes:
+      - ./springKafka:/home/springKafka
+    ports:
+      - "${KAFKA_PORT:-8080}:8080"
+  user_service:
+    depends_on:
+      - "spring_kafka"
+    build:
+      context: "./user-service"
+      dockerfile: "./docker/Dockerfile"
+    networks:
+      msa_network:
+        ipv4_address: 172.24.0.7
+    volumes:
+      - ./user-service:/home/user-service
+    ports:
+      - "${USER_PORT:-8082}:8082"
 networks:
   msa_network:
     driver: bridge
