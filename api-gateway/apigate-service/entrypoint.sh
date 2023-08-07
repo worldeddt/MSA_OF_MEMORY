@@ -7,3 +7,5 @@ echo $(mv target/*.jar apigate-service.jar)
 echo $(chmod 744 apigate-service.jar)
 echo $(nohup java -jar $(pwd)/apigate-service.jar &)
 echo "build end";
+
+

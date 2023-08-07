@@ -30,39 +30,49 @@ services:
     container_name: api_gateway
     restart: "unless-stopped"
     stop_grace_period: "50s"
-  booker_db:
+  msa_booker_db:
     depends_on:
-      - "spring_kafka"
+      - "api_gateway"
+    restart: "unless-stopped"
+    container_name: msa_booker_db
     environment:
       - MARIADB_ROOT_PASSWORD=eddy
-      - MARIADB_USER=eddy
-      - MARIADB_DB=msa
+      - MYSQL_USER=eddy
+      - MYSQL_PASSWORD=eddy
+      - MYSQL_DATABASE=msa
+      - TZ=Asia/Seoul
     networks:
       msa_network:
         ipv4_address: 172.24.0.4
-    ports:
-      - "${BOOKER_DB_PORT:-3306}:3306"
     build:
       context: "./"
       dockerfile: "mariadb/docker/booker/Dockerfile"
-  user_db:
+#    command:
+#      - character-set-server=utf8mb4
+#      - collation-server=utf8mb4_unicode_ci
+  msa_user_db:
+    depends_on:
+      - "api_gateway"
+    restart: "unless-stopped"
+    container_name: msa_user_db
     networks:
       msa_network:
         ipv4_address: 172.24.0.5
-    depends_on:
-      - "user_service"
     environment:
       - MARIADB_ROOT_PASSWORD=eddy
-      - MARIADB_USER=eddy
-      - MARIADB_DB=msa
+      - MYSQL_USER=eddy
+      - MYSQL_PASSWORD=eddy
+      - MYSQL_DATABASE=msa
+      - TZ=Asia/Seoul
     build:
       context: "./"
       dockerfile: "mariadb/docker/user/Dockerfile"
-    ports:
-      - "${USER_DB_PORT:-3307}:3306"
+#    command:
+#      - --character-set-server=utf8mb4
+#      - --collation-server=utf8mb4_unicode_ci
   spring_kafka:
     depends_on:
-      - "api_gateway"
+      - "msa_booker_db"
     build:
       context: "./springKafka"
       dockerfile: "./docker/Dockerfile"
@@ -73,9 +83,10 @@ services:
       - ./springKafka:/home/springKafka
     ports:
       - "${KAFKA_PORT:-8080}:8080"
+    restart: "unless-stopped"
   user_service:
     depends_on:
-      - "spring_kafka"
+      - "msa_user_db"
     build:
       context: "./user-service"
       dockerfile: "./docker/Dockerfile"
