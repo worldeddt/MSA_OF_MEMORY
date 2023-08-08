@@ -4,7 +4,7 @@ MAINTAINER EDDY
 LABEL authors="worldeddt"
 WORKDIR /home/db
 
-EXPOSE 3307
+EXPOSE 3306
 
 RUN apt-get update && \
     apt-get install -y net-tools &&  \
