@@ -27,28 +27,37 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-      - name: ✨api gateway build
+      - name: ✨패키징
         working-directory: ./
         run: |
-          echo $(pwd)
-          echo $(ls)
-          ./api-gateway/apigate-service/mvnw clean package -DskipTests
-          mv target/*.jar apigate-service.jar
-      - name: ✅copy the api gateway
-        working-directory: ./api-gateway/apigate-service/
-        run: |
-          echo $(ls)
-          mv ./target/*.jar apigate-service.jar
-      - name: ✨eureka server build
-        working-directory: ./
-        run: |
-          ./eureka_server/cloud-discovery-eureka-server/mvnw clean package -DskipTests
-      - name: ✅copy the eureka server
-        working-directory: ./eureka_server/cloud-discovery-eureka-server/
-        run: |
-          mv target/*.jar cloud-discovery-eureka-server.jar
-      - name: 📦 빌드한 코드를 압축
-        run: zip -r msa_of_memory.zip ./eureka_server/cloud-discovery-eureka-server/target
+          zip -r msa_of_memory.zip ./api-gateway ./eureka_server ./springKafka ./user-service
+      - name: 🌎 AWS에 접속
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+
+#      - name: 🦖 S3에 압축된 서버 코드를 업로드
+#        run: aws s3 cp --region ap-northeast-2 ./partners.zip s3://partners-github-test/deploy/
+#
+#      - name: 🚀 AWS codeDeploy로 배포를 시작
+#        run: aws deploy create-deployment
+#          --application-name partners-erp-code-deploy-test
+#          --deployment-config-name CodeDeployDefault.OneAtATime
+#          --deployment-group-name partners-erp-deploy-test-group
+#          --s3-location bucket=partners-github-test,bundleType=zip,key=deploy/msa_of_memory.zip
+#      - name: ✨eureka server build
+#        working-directory: ./eureka_server
+#        run: |
+#          zip -r msa_of_memory.zip ./apigate-service
+#          ./eureka_server/cloud-discovery-eureka-server/mvnw clean package -DskipTests
+#      - name: ✅copy the eureka server
+#        working-directory: ./eureka_server/cloud-discovery-eureka-server/
+#        run: |
+#          mv target/*.jar cloud-discovery-eureka-server.jar
+#      - name: 📦 빌드한 코드를 압축
+#        run: zip -r msa_of_memory.zip ./eureka_server/cloud-discovery-eureka-server/target
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       - name: Update dependency graph

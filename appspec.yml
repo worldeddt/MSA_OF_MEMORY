@@ -1,0 +1,24 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/partners
+    overwrite: yes
+
+permissions:
+  - object: /home/ubuntu
+    pattern: '**'
+    owner: ubuntu
+    group: ubuntu
+
+hooks:
+  #  ApplicationStop:
+  #    - location: scripts/stop.sh
+  #      runas: ubuntu
+  AfterInstall:
+    - location: scripts/after-deploy.sh
+      timeout: 500
+      runas: ubuntu
+#  ApplicationStart:
+#    - location: scripts/start.sh
+#      runas: ubuntu
