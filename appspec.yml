@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/partners
+    destination: /home/ubuntu
     overwrite: yes
 
 permissions:
@@ -17,7 +17,6 @@ hooks:
   #      runas: ubuntu
   AfterInstall:
     - location: scripts/after-deploy.sh
-      timeout: 500
       runas: ubuntu
 #  ApplicationStart:
 #    - location: scripts/start.sh
