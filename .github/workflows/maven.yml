@@ -43,9 +43,9 @@ jobs:
 
       - name: 🚀 AWS codeDeploy로 배포를 시작
         run: aws deploy create-deployment
-          --application-name eddy_deploy_application
+          --application-name partners-code-deploy-non-scaling
           --deployment-config-name CodeDeployDefault.OneAtATime
-          --deployment-group-name eddy_deploy_group_one
+          --deployment-group-name partners-code-deploy-non-scaling-group
           --s3-location bucket=partners-github-test,bundleType=zip,key=deploy/msa_of_memory.zip
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
