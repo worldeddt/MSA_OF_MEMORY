@@ -30,7 +30,7 @@ jobs:
       - name: ✨패키징
         working-directory: ./
         run: |
-          zip -r msa_of_memory.zip ./api-gateway ./eureka_server ./springKafka ./user-service
+          zip -r msa_of_memory.zip ./appspec.yml ./api-gateway ./eureka_server ./springKafka ./user-service
       - name: 🌎 AWS에 접속
         uses: aws-actions/configure-aws-credentials@v1
         with:
