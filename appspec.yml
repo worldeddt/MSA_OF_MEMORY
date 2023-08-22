@@ -20,6 +20,7 @@ hooks:
   #      runas: ubuntu
   AfterInstall:
     - location: scripts/after-deploy.sh
+      timeout: 300000
       runas: ubuntu
 #  ApplicationStart:
 #    - location: scripts/start.sh
