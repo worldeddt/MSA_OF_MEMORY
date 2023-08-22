@@ -1,11 +1,15 @@
 #!/bin/bash
 REPOSITORY=/var/www/html
+echo "jar start"
 
 cd $REPOSITORY/api-gateway/apigate-service
 
-echo $(sudo pwd)
-sudo ./mvnw clean package -DskipTests &&
-cd $REPOSITORY/eureka_server/cloud-discovery-eureka-server &&
-sudo ./mvnw clean package -DskipTests
+sudo chmod +x entrypoint.sh && \
+./entrypoint.sh && \
+
+cd $REPOSITORY/eureka_server/cloud-discovery-eureka-server
+
+sudo chmod +x entrypoint.sh && \
+./entrypoint.sh && \
 
 echo "upload complete"

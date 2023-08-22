@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "build start";
-echo $(./mvnw clean package -DskipTests)
-echo $(mv target/*.jar cloud-discovery-eureka-server.jar)
-echo $(chmod 744 cloud-discovery-eureka-server.jar)
-echo $(nohup java -jar $(pwd)/cloud-discovery-eureka-server.jar &)
+echo $(sudo ./mvnw clean package -DskipTests)
+echo $(sudo mv target/*.jar cloud-discovery-eureka-server.jar)
+echo $(sudo chmod 744 cloud-discovery-eureka-server.jar)
+echo $(sudo nohup java -jar $(pwd)/cloud-discovery-eureka-server.jar &)
 echo "build end";
