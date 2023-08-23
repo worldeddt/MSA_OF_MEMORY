@@ -10,9 +10,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["service"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["service"]
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
       - name: ✨패키징
         working-directory: ./
         run: |
-          zip -r msa_of_memory.zip ./appspec.yml ./scripts ./api-gateway ./eureka_server ./springKafka ./user-service
+          zip -r user.zip ./appspec.yml ./scripts/services/user ./user-service
       - name: 🌎 AWS에 접속
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -39,7 +39,7 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: 🦖 S3에 압축된 서버 코드를 업로드
-        run: aws s3 cp --region ap-northeast-2 ./msa_of_memory.zip s3://eddy-deploy-s3-one/deploy/
+        run: aws s3 cp --region ap-northeast-2 ./user.zip s3://eddy-deploy-s3-one/service/user
 
       - name: 🚀 AWS codeDeploy로 배포를 시작
         run: aws deploy create-deployment
