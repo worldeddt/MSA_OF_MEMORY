@@ -45,5 +45,5 @@ jobs:
         run: aws deploy create-deployment
           --application-name eddy_deploy_application
           --deployment-config-name CodeDeployDefault.OneAtATime
-          --deployment-group-name eddy_deploy_service_group
-          --s3-location bucket=eddy-deploy-s3-one,bundleType=zip,key=deploy/user.zip
+          --deployment-group-name eddy_deploy_application_user
+          --s3-location bucket=eddy-deploy-s3-one,bundleType=zip,key=service/user/user.zip
