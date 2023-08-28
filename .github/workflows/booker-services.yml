@@ -40,10 +40,10 @@ jobs:
 
       - name: 🦖 S3에 압축된 서버 코드를 업로드
         run: aws s3 cp --region ap-northeast-2 ./booker.zip s3://eddy-deploy-s3-one/service/booker
-#
-#      - name: 🚀 AWS codeDeploy로 배포를 시작
-#        run: aws deploy create-deployment
-#          --application-name eddy_deploy_application
-#          --deployment-config-name CodeDeployDefault.OneAtATime
-#          --deployment-group-name eddy_deploy_application_booker
-#          --s3-location bucket=eddy-deploy-s3-one,bundleType=zip,key=service/booker/booker.zip
+
+      - name: 🚀 AWS codeDeploy로 배포를 시작
+        run: aws deploy create-deployment
+          --application-name eddy_deploy_application
+          --deployment-config-name CodeDeployDefault.OneAtATime
+          --deployment-group-name eddy_deploy_application_booker
+          --s3-location bucket=eddy-deploy-s3-one,bundleType=zip,key=service/booker/booker.zip
