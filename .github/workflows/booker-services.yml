@@ -30,7 +30,7 @@ jobs:
       - name: ✨패키징
         working-directory: ./
         run: |
-          zip -r booker.zip ./appspec.yml ./scripts/services/booker ./springKafka
+          zip -r booker.zip ./springKafka/appspec.yml ./springKafka/scripts ./springKafka
       - name: 🌎 AWS에 접속
         uses: aws-actions/configure-aws-credentials@v1
         with:

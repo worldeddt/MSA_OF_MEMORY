@@ -1,0 +1,27 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html/
+    overwrite: yes
+
+permissions:
+  - object: /home/ubuntu
+    pattern: '**'
+    owner: ubuntu
+    group: ubuntu
+
+hooks:
+  #  BeforeInstall:
+  #    - location: scripts/before-deploy.sh
+  #      runas: ubuntu
+  #  ApplicationStop:
+  #    - location: scripts/stop.sh
+  #      runas: ubuntu
+  AfterInstall:
+    - location: scripts/after-deploy.sh
+      timeout: 50000
+      runas: ubuntu
+#  ApplicationStart:
+#    - location: scripts/start.sh
+#      runas: ubuntu
