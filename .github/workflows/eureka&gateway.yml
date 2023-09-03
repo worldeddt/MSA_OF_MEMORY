@@ -30,7 +30,7 @@ jobs:
       - name: ✨패키징
         working-directory: ./
         run: |
-          zip -r eureka_gateway.zip ./appspec.yml ./scripts/eureka&gateway ./eureka_server ./api-gateway
+          zip -r eureka_gateway.zip ./appspec.yml ./scripts/eurekaAndGateway ./eureka_server ./api-gateway
       - name: 🌎 AWS에 접속
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -39,11 +39,11 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: 🦖 S3에 압축된 서버 코드를 업로드
-        run: aws s3 cp --region ap-northeast-2 ./eureka_gateway.zip s3://eddy-deploy-s3-one/eureka&gateway/
+        run: aws s3 cp --region ap-northeast-2 ./eureka_gateway.zip s3://eddy-deploy-s3-one/eurekaAndGateway/
 
       - name: 🚀 AWS codeDeploy로 배포를 시작
         run: aws deploy create-deployment
           --application-name eddy_deploy_application
           --deployment-config-name CodeDeployDefault.OneAtATime
           --deployment-group-name eddy_deploy_group_one
-          --s3-location bucket=eddy-deploy-s3-one,bundleType=zip,key=eureka&gateway/eureka_gateway.zip
+          --s3-location bucket=eddy-deploy-s3-one,bundleType=zip,key=eurekaAndGateway/eureka_gateway.zip

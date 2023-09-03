@@ -19,7 +19,7 @@ hooks:
   #    - location: scripts/stop.sh
   #      runas: ubuntu
   AfterInstall:
-    - location: scripts/after-deploy.sh
+    - location: scripts/eurekaAndGateway/after-deploy.sh
       timeout: 50000
       runas: ubuntu
 #  ApplicationStart:
