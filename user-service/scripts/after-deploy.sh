@@ -1,9 +1,9 @@
 #!/bin/bash
 REPOSITORY=/var/www/html
-echo "jar start"
+echo "jar start" $(date -d "+9 hours") | sudo tee -a deploy.txt
 
-cd $REPOSITORY/user-service && \
+cd $REPOSITORY && \
 sudo chmod +x entrypoint/entrypoint-prod.sh && \
-./entrypoint-prod.sh
+./entrypoint/entrypoint-prod.sh | sudo tee -a deploy.txt
 
-echo "upload complete"
+echo "jar start" $(date -d "+9 hours") | sudo tee -a deploy.txt

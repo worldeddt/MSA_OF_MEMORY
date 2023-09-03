@@ -24,7 +24,7 @@ spring:
     driver-class-name: 'org.mariadb.jdbc.Driver'
     username: 'root'
     url: 'jdbc:mariadb://eddy-service-2.cijrhh9cjq2i.ap-northeast-2.rds.amazonaws.com:3306/msa'
-    password: 'eddy'
+    password: 'root12345'
   jpa:
     hibernate:
       ddl-auto: create

@@ -1,9 +1,10 @@
 #!/bin/bash
 REPOSITORY=/var/www/html
-echo "jar start"
 
-cd $REPOSITORY/springKafka && \
+echo "jar start" $(date -d "+9 hours") | sudo tee -a deploy.txt
+
+cd $REPOSITORY && \
 sudo chmod +x entrypoint/entrypoint-prod.sh && \
-./entrypoint-prod.sh
+./entrypoint/entrypoint-prod.sh | sudo tee -a deploy.txt
 
-echo "upload complete"
+echo "jar end" $(date -d "+9 hours") | sudo tee -a deploy.txt

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "build start";
+echo "build start" $(date -d "+9 hours") | sudo tee -a deploy.txt
 
 javahome = $(echo $JAVA_HOME)
 
@@ -16,4 +16,4 @@ echo $(./mvnw clean package -DskipTests)
 echo $(mv target/*.jar spring-kafka.jar)
 echo $(chmod 744 spring-kafka.jar)
 echo $(nohup java -jar -Dspring.profiles.active=prod $(pwd)/spring-kafka.jar &)
-echo "build end";
+echo "build end" $(date -d "+9 hours") | sudo tee -a deploy.txt
