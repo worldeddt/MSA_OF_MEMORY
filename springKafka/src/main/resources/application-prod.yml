@@ -7,9 +7,9 @@ message:
     name: msa_user_topic
 
 eureka:
-#  instance:
-#    instance-id: ${spring.cloud.client.ip-address}:${spring.application.instance_id:${random.value}}
-#    prefer-ip-address: true
+  #  instance:
+  #    instance-id: ${spring.cloud.client.ip-address}:${spring.application.instance_id:${random.value}}
+  #    prefer-ip-address: true
   client:
     register-with-eureka: true
     fetch-registry: true
@@ -35,7 +35,7 @@ spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     username: 'root'
-    url: 'jdbc:mariadb://172.24.0.4:3306/msa'
+    url: 'jdbc:mariadb://eddy-service-1.cijrhh9cjq2i.ap-northeast-2.rds.amazonaws.com:3306/msa'
     password: 'eddy'
   jpa:
     hibernate:

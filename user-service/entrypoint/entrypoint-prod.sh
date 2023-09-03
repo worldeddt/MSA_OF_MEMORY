@@ -12,8 +12,8 @@ if [ -z javahome]; then
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 fi
 
-#echo $(./mvnw clean package -DskipTests)
-#echo $(mv target/*.jar spring-kafka.jar)
-#echo $(chmod 744 spring-kafka.jar)
-#echo $(nohup java -jar $(pwd)/spring-kafka.jar &)
+echo $(./mvnw clean package -DskipTests)
+echo $(mv target/*.jar user-service.jar)
+echo $(chmod 744 user-service.jar)
+echo $(nohup java -jar -Dspring.profiles.active=prod $(pwd)/user-service.jar &)
 echo "build end";

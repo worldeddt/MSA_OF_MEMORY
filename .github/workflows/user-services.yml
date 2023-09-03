@@ -30,7 +30,7 @@ jobs:
       - name: ✨패키징
         working-directory: ./
         run: |
-          zip -r user.zip ./user-service/appspec.yml ./user-service/scripts ./user-service
+          zip -r user.zip ./user-service
       - name: 🌎 AWS에 접속
         uses: aws-actions/configure-aws-credentials@v1
         with:

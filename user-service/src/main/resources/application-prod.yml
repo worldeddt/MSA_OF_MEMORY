@@ -1,0 +1,54 @@
+server:
+  port : 8082
+
+message:
+  topic:
+    name: msa_user_topic
+
+eureka:
+  #  instance:
+  #    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+  #    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://ec2-52-79-122-133.ap-northeast-2.compute.amazonaws.com:8761/eureka
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: user-service
+  datasource:
+    driver-class-name: 'org.mariadb.jdbc.Driver'
+    username: 'root'
+    url: 'jdbc:mariadb://eddy-service-2.cijrhh9cjq2i.ap-northeast-2.rds.amazonaws.com:3306/msa'
+    password: 'eddy'
+  jpa:
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        use_sql_comments: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MariaDBDialect
+        storage_engine: innodb
+    defer-datasource-initialization: true
+
+logging:
+  level:
+    com.example.netflixzuuluser.client: DEBUG
+
+token:
+  expiration_time: 86400000
+  secret: user_token
+
+#order_service:order_service:
+##  url : "http://127.0.0.1/8082/booker/{UserId}"
+#  url : "http://127.0.0.1/8082/booker/{UserId}"
+
