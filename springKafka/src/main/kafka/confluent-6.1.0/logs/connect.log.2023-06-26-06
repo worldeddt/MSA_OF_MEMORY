@@ -1,0 +1,47 @@
+[2023-06-26 06:13:22,041] INFO [Worker clientId=connect-1, groupId=connect-cluster] Group coordinator localhost:9092 (id: 2147483647 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response.isDisconnected: false. Rediscovery will be attempted. (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:904)
+[2023-06-26 06:13:22,053] INFO [Consumer clientId=consumer-connect-cluster-2, groupId=connect-cluster] Error sending fetch request (sessionId=153332501, epoch=25) to node 0: (org.apache.kafka.clients.FetchSessionHandler:481)
+org.apache.kafka.common.errors.DisconnectException
+[2023-06-26 06:13:22,053] INFO [Consumer clientId=consumer-connect-cluster-1, groupId=connect-cluster] Error sending fetch request (sessionId=2087107735, epoch=25) to node 0: (org.apache.kafka.clients.FetchSessionHandler:481)
+org.apache.kafka.common.errors.DisconnectException
+[2023-06-26 06:13:22,078] INFO [Consumer clientId=consumer-connect-cluster-3, groupId=connect-cluster] Error sending fetch request (sessionId=813464329, epoch=26) to node 0: (org.apache.kafka.clients.FetchSessionHandler:481)
+org.apache.kafka.common.errors.DisconnectException
+[2023-06-26 06:13:22,298] INFO [Worker clientId=connect-1, groupId=connect-cluster] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null) (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:847)
+[2023-06-26 06:13:26,810] INFO WorkerSourceTask{id=my-source-connect-second-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:478)
+[2023-06-26 06:13:26,810] INFO WorkerSourceTask{id=my-source-connect-second-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:495)
+[2023-06-26 06:13:36,820] INFO WorkerSourceTask{id=my-source-connect-second-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:478)
+[2023-06-26 06:13:36,821] INFO WorkerSourceTask{id=my-source-connect-second-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:495)
+[2023-06-26 06:56:57,402] INFO [Consumer clientId=consumer-connect-cluster-2, groupId=connect-cluster] Error sending fetch request (sessionId=885529435, epoch=29) to node 0: (org.apache.kafka.clients.FetchSessionHandler:481)
+org.apache.kafka.common.errors.DisconnectException
+[2023-06-26 06:56:57,480] INFO [Worker clientId=connect-1, groupId=connect-cluster] Group coordinator localhost:9092 (id: 2147483647 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response.isDisconnected: false. Rediscovery will be attempted. (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:904)
+[2023-06-26 06:56:57,405] INFO [Consumer clientId=consumer-connect-cluster-1, groupId=connect-cluster] Error sending fetch request (sessionId=1002555918, epoch=29) to node 0: (org.apache.kafka.clients.FetchSessionHandler:481)
+org.apache.kafka.common.errors.DisconnectException
+[2023-06-26 06:56:57,403] INFO [Consumer clientId=consumer-connect-cluster-3, groupId=connect-cluster] Error sending fetch request (sessionId=1330460387, epoch=29) to node 0: (org.apache.kafka.clients.FetchSessionHandler:481)
+org.apache.kafka.common.errors.DisconnectException
+[2023-06-26 06:56:57,784] INFO [Worker clientId=connect-1, groupId=connect-cluster] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null) (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:847)
+[2023-06-26 06:56:57,788] INFO [Worker clientId=connect-1, groupId=connect-cluster] Group coordinator localhost:9092 (id: 2147483647 rack: null) is unavailable or invalid due to cause: coordinator unavailable.isDisconnected: false. Rediscovery will be attempted. (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:904)
+[2023-06-26 06:56:57,898] INFO [Worker clientId=connect-1, groupId=connect-cluster] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null) (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:847)
+[2023-06-26 06:56:57,998] INFO [Worker clientId=connect-1, groupId=connect-cluster] Session key updated (org.apache.kafka.connect.runtime.distributed.DistributedHerder:1578)
+[2023-06-26 06:57:02,668] INFO WorkerSourceTask{id=my-source-connect-second-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:478)
+[2023-06-26 06:57:02,669] INFO WorkerSourceTask{id=my-source-connect-second-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:495)
+[2023-06-26 06:57:12,675] INFO WorkerSourceTask{id=my-source-connect-second-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:478)
+[2023-06-26 06:57:12,676] INFO WorkerSourceTask{id=my-source-connect-second-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:495)
+[2023-06-26 06:57:22,685] INFO WorkerSourceTask{id=my-source-connect-second-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:478)
+[2023-06-26 06:57:22,686] INFO WorkerSourceTask{id=my-source-connect-second-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:495)
+[2023-06-26 06:57:32,693] INFO WorkerSourceTask{id=my-source-connect-second-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:478)
+[2023-06-26 06:57:32,694] INFO WorkerSourceTask{id=my-source-connect-second-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:495)
+[2023-06-26 06:57:42,702] INFO WorkerSourceTask{id=my-source-connect-second-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:478)
+[2023-06-26 06:57:42,702] INFO WorkerSourceTask{id=my-source-connect-second-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:495)
+[2023-06-26 06:57:52,703] INFO WorkerSourceTask{id=my-source-connect-second-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:478)
+[2023-06-26 06:57:52,704] INFO WorkerSourceTask{id=my-source-connect-second-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:495)
+[2023-06-26 06:58:45,214] INFO [Consumer clientId=consumer-connect-cluster-1, groupId=connect-cluster] Error sending fetch request (sessionId=1037189489, epoch=111) to node 0: (org.apache.kafka.clients.FetchSessionHandler:481)
+org.apache.kafka.common.errors.DisconnectException
+[2023-06-26 06:58:45,329] INFO [Consumer clientId=consumer-connect-cluster-2, groupId=connect-cluster] Error sending fetch request (sessionId=494496646, epoch=111) to node 0: (org.apache.kafka.clients.FetchSessionHandler:481)
+org.apache.kafka.common.errors.DisconnectException
+[2023-06-26 06:58:45,273] INFO [Worker clientId=connect-1, groupId=connect-cluster] Group coordinator localhost:9092 (id: 2147483647 rack: null) is unavailable or invalid due to cause: session timed out without receiving a heartbeat response.isDisconnected: false. Rediscovery will be attempted. (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:904)
+[2023-06-26 06:58:45,215] INFO [Consumer clientId=consumer-connect-cluster-3, groupId=connect-cluster] Error sending fetch request (sessionId=538973816, epoch=111) to node 0: (org.apache.kafka.clients.FetchSessionHandler:481)
+org.apache.kafka.common.errors.DisconnectException
+[2023-06-26 06:58:45,710] INFO [Worker clientId=connect-1, groupId=connect-cluster] Discovered group coordinator localhost:9092 (id: 2147483647 rack: null) (org.apache.kafka.clients.consumer.internals.AbstractCoordinator:847)
+[2023-06-26 06:58:48,828] INFO WorkerSourceTask{id=my-source-connect-second-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:478)
+[2023-06-26 06:58:48,829] INFO WorkerSourceTask{id=my-source-connect-second-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:495)
+[2023-06-26 06:58:58,839] INFO WorkerSourceTask{id=my-source-connect-second-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSourceTask:478)
+[2023-06-26 06:58:58,839] INFO WorkerSourceTask{id=my-source-connect-second-0} flushing 0 outstanding messages for offset commit (org.apache.kafka.connect.runtime.WorkerSourceTask:495)
